@@ -8,7 +8,7 @@ O **POCAMARKET** é uma aplicação web (Single Page Application) desenvolvida p
 
 O objetivo principal do projeto foi criar uma jornada de usuário fluida, sem distrações, culminando em um Call to Action (CTA) direto para o WhatsApp do vendedor, encurtando o tempo de decisão e fechamento do pedido.
 
-🔗 **[Acessar a Aplicação Online](COLOQUE-SEU-LINK-AQUI-EX:-www.mletix.com)**
+🔗 **[Acessar a Aplicação Online](https://tadeuggomes.github.io/calculadora/)**
 
 ---
 
@@ -34,6 +34,3 @@ O objetivo principal do projeto foi criar uma jornada de usuário fluida, sem di
 Desenvolvido por Jorge Tadeu, estudante do 4º período de Sistemas de Informação na CESAR School. 
 
 Este projeto reflete minha visão de unir desenvolvimento de software com estratégia de negócios e e-commerce. Meu foco é construir soluções tecnológicas que não apenas apresentem um código limpo, mas que entreguem estética impecável, excelente experiência do usuário e resultados reais de conversão.
-
-* **GitHub:** [Seu Link do GitHub]
-* **LinkedIn:** [Seu Link do LinkedIn]
