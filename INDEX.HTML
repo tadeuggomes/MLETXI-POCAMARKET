@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POCAMARKET</title>
+    <link rel="icon" href="img/seventten - Editado.png" type="image/svg+xml">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('img/IMG_5413.JPG');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #b0c4de; 
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .screen {
+            display: none;
+            min-height: 100vh;
+            width: 100%;
+            justify-content: center;
+            align-items: flex-start; 
+            padding: 40px 20px 100px 20px; 
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(20px);
+        }
+
+        .screen.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.70); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            border: 2px solid rgba(0, 198, 255, 0.9);
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.8), 
+                        0 0 35px rgba(0, 114, 255, 0.6), 
+                        inset 0 0 20px rgba(0, 198, 255, 0.5);
+            box-sizing: border-box;
+            position: relative;
+            text-align: center;
+            margin: auto; 
+        }
+
+        h1.main-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0 0 5px 0;
+            color: #0072ff;
+            letter-spacing: -1px;
+            text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .handle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .info-container {
+            padding: 35px 30px;
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info-container h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #0072ff;
+        }
+
+        .info-container ul {
+            padding-left: 20px;
+            margin: 0 0 25px 0;
+            color: #111;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 600;
+            text-align: left;
+            width: 100%;
+        }
+
+        .info-container li {
+            margin-bottom: 12px;
+        }
+
+        .info-container li::marker {
+            color: #0084ff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .info-container a {
+            color: #0072ff;
+            text-decoration: none;
+            font-weight: 800;
+            transition: color 0.3s ease;
+        }
+
+        .info-container a:hover {
+            color: #00c6ff;
+            text-decoration: underline;
+        }
+
+        .notion-link {
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .calculator-container {
+            padding: 40px 30px;
+            max-width: 380px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: auto; 
+            transition: all 0.4s ease;
+        }
+
+        input {
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 15px;
+            border: 2px solid transparent; 
+            border-radius: 14px;
+            font-size: 18px;
+            box-sizing: border-box;
+            outline: none;
+            text-align: center;
+            color: #222;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        input:focus {
+            border-color: #00c6ff;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.4);
+            background: #ffffff;
+        }
+
+        .error-shake {
+            animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+            border-color: #ff0055 !important;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 15px rgba(0, 114, 255, 0.3);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 114, 255, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .result-wrapper {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 100%;
+        }
+
+        .calculator-container.show-result .result-wrapper {
+            max-height: 300px; 
+            opacity: 1;
+            margin-top: 25px;
+        }
+
+        .result-box {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 198, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 198, 255, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .result-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .result-value {
+            font-size: 34px;
+            font-family: 'Montserrat', sans-serif;
+            color: #111;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
+        }
+
+        .social-btn.wa {
+            text-decoration: none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 800;
+            padding: 16px 10px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            background: #25D366;
+            animation: pulse 2s infinite;
+        }
+
+        .social-btn.wa:hover {
+            filter: brightness(1.1);
+            animation: none;
+            transform: translateY(-2px);
+        }
+
+        .btn-voltar {
+            background: none;
+            border: none;
+            color: #555;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: underline;
+            font-family: 'Poppins', sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        .btn-voltar:hover {
+            color: #0072ff;
+        }
+
+        .site-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 12px 0;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-link {
+            color: #111;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-link:hover {
+            color: #0072ff;
+            transform: translateY(-2px);
+        }
+
+        .footer-separator {
+            color: #333;
+            font-weight: 800;
+        }
+
+        @media (max-width: 480px) {
+            .site-footer { gap: 10px; }
+            .footer-link { font-size: 10px; }
+            h1.main-title { font-size: 28px; }
+            .result-value { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="tela-regras" class="screen active">
+        <div class="glass-panel info-container">
+            <h1 class="main-title">POCAMARKET</h1>
+            <div class="handle">@mletxi</div>
+            <h2>Como Comprar & Regras</h2>
+            <ul>
+                <li>Digite o valor em dólar do card desejado no campo da calculadora na próxima página e veja o valor convertido em real (já com as taxas do poca e da gom).</li>
+                <li>Agora que já sabe o valor do seu card, se desejar prosseguir com a compra mande o link dos cards desejados no <a href="https://wa.me/5581920018626" target="_blank">meu WhatsApp</a>.</li>
+                <li>Eu te mando o pix, você faz o pagamento e me manda o comprovante na própria conversa.</li>
+                <li>Assim que for pago, eu depositarei o valor no poca, comprarei os cards e te mostro o comprovante de compra.</li>
+                <li>Prontinho! A caixa fecha a cada 40 cards e são enviados para a minha warehouse coreana.</li>
+                <li>Tenha paciência, lembre-se que a caixa do poca precisa fechar e depois a caixa na warehouse precisa acumular com outros itens pro frete inter valer a pena para todos.</li>
+                <li>Aceito a compra de cards de qualquer grupo.</li>
+                <li>Não é possivel cancelar a compra após ela ser realizada, se necessário é possivel o repasse.</li>
+                <li>Não me responsabilizo por itens falsificados (o poca analisa, mas é possivel que passe por eles imperceptível).</li>
+            </ul>
+            
+            <div class="notion-link">
+                <a href="https://mletxi.notion.site/Regras-d32ff3a1f639445a8e201dd45ff03593?source=copy_link" target="_blank">Ler Regras Completas no Notion</a>
+            </div>
+
+            <button class="btn-primary" onclick="avancarParaCalculadora()">Li todas as regras</button>
+        </div>
+    </div>
+
+    <div id="tela-calc" class="screen">
+        <div class="glass-panel calculator-container" id="c">
+            <h1 class="main-title">CALCULADORA</h1>
+            <div class="handle">@mletxi</div>
+            
+            <input type="number" id="v" placeholder="Digite o valor" step="any">
+            <button class="btn-primary" id="b">Calcular</button>
+            
+            <div class="result-wrapper">
+                <div class="result-box">
+                    <div class="result-label">Resultado Final</div>
+                    <div class="result-value" id="t">R$ 0,00</div>
+                    <a href="https://wa.me/5581920018626" target="_blank" class="social-btn wa">Faça seu Pedido</a>
+                </div>
+            </div>
+            
+            <button class="btn-voltar" onclick="voltarParaRegras()">Ler regras novamente</button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <a href="https://wa.me/5581920018626" target="_blank" class="footer-link">WHATSAPP</a>
+        <span class="footer-separator">•</span>
+        <a href="https://x.com/mletxi" target="_blank" class="footer-link">TWITTER</a>
+        <span class="footer-separator">•</span>
+        <a href="https://www.instagram.com/mletxi" target="_blank" class="footer-link">INSTAGRAM</a>
+    </footer>
+
+    <script>
+        const telaRegras = document.getElementById('tela-regras');
+        const telaCalc = document.getElementById('tela-calc');
+        const containerCalc = document.getElementById('c');
+
+        function avancarParaCalculadora() {
+            telaRegras.classList.remove('active');
+            setTimeout(() => {
+                telaRegras.style.display = 'none';
+                telaCalc.style.display = 'flex';
+                setTimeout(() => {
+                    telaCalc.classList.add('active');
+                }, 50);
+            }, 500); 
+        }
+
+        function voltarParaRegras() {
+            telaCalc.classList.remove('active');
+            containerCalc.classList.remove('show-result');
+            document.getElementById('v').value = '';
+            
+            setTimeout(() => {
+                telaCalc.style.display = 'none';
+                telaRegras.style.display = 'flex';
+                setTimeout(() => {
+                    telaRegras.classList.add('active');
+                }, 50);
+            }, 500);
+        }
+
+        const inputValor = document.getElementById('v');
+        const btnCalcular = document.getElementById('b');
+        const txtResultado = document.getElementById('t');
+
+        function realizarCalculo() {
+            const x = parseFloat(inputValor.value);
+            
+            if (isNaN(x) || inputValor.value.trim() === "") {
+                inputValor.classList.add('error-shake');
+                setTimeout(() => { inputValor.classList.remove('error-shake'); }, 400);
+                inputValor.focus();
+                containerCalc.classList.remove('show-result');
+                return;
+            }
+            
+            const resultado = x * 5.8 + (x * 0.4);
+            
+            txtResultado.innerText = resultado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            containerCalc.classList.add('show-result');
+        }
+
+        btnCalcular.addEventListener('click', realizarCalculo);
+        inputValor.addEventListener('keypress', e => { if(e.key === 'Enter') realizarCalculo(); });
+        inputValor.addEventListener('input', () => { containerCalc.classList.remove('show-result'); });
+    </script>
+</body>
+</html>
