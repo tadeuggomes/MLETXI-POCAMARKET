@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pocamarket Mletxi</title>
+    <title>POCAMARKET</title>
     <link rel="icon" href="img/seventten - Editado.png" type="image/svg+xml">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;600&display=swap');
@@ -31,7 +31,7 @@
             width: 100%;
             justify-content: center;
             align-items: flex-start; 
-            padding: 40px 20px 100px 20px; 
+            padding: 40px 20px 60px 20px; 
             box-sizing: border-box;
             opacity: 0;
             transition: opacity 0.5s ease, transform 0.5s ease;
@@ -78,8 +78,10 @@
         }
 
         .profile-img {
-            width: 450px;
-            height: 200px;
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            max-height: 250px;
             object-fit: cover;
             border-radius: 16px;
             border: 3px solid #fff;
@@ -137,6 +139,24 @@
         .info-container a:hover {
             color: #e85d75; 
             border-bottom: 1px solid #e85d75;
+        }
+
+        .poca-link-btn {
+            display: inline-block;
+            background: #F7CAC9;
+            color: white !important;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            text-decoration: none !important;
+            margin-left: 5px;
+            box-shadow: 0 3px 8px rgba(247, 202, 201, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .poca-link-btn:hover {
+            background: #e8bdbe;
+            transform: translateY(-1px);
         }
 
         .notion-link {
@@ -215,10 +235,6 @@
             transform: translateY(-2px);
             background: #e8bdbe;
             box-shadow: 0 8px 20px rgba(247, 202, 201, 0.7);
-        }
-
-        .btn-primary:active {
-            transform: scale(0.97);
         }
 
         .result-wrapper {
@@ -310,11 +326,9 @@
         }
 
         .site-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
+            position: relative; 
             width: 100%;
-            padding: 5px 0;
+            padding: 20px 0;
             background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -325,6 +339,7 @@
             justify-content: center;
             align-items: center;
             gap: 25px;
+            margin-top: 40px; 
         }
 
         .footer-link {
@@ -355,9 +370,8 @@
             .info-container h2 { font-size: 18px; }
             .info-container ul { font-size: 13px; }
             .info-container li { margin-bottom: 12px; }
-            .profile-img { width: 100%; height: auto; max-height: 180px; }
             .result-value { font-size: 30px; }
-            .site-footer { gap: 5px; padding: 12px 0; }
+            .site-footer { gap: 15px; padding: 15px 0; flex-wrap: wrap; }
             .footer-link { font-size: 11px; }
         }
     </style>
@@ -372,15 +386,14 @@
             
             <h2>Como Comprar & Regras</h2>
             <ul>
-                <li>Digite o valor em dólar do card desejado no campo da calculadora na próxima página e veja o valor convertido em real (já com as taxas do poca e da gom).</li>
-                <li>Agora que já sabe o valor do seu card, se desejar prosseguir com a compra mande o link dos cards desejados no <a href="https://wa.me/5581920018626" target="_blank">meu WhatsApp</a>.</li>
-                <li>Eu te mando o pix, você faz o pagamento e me manda o comprovante na própria conversa.</li>
-                <li>Assim que for pago, eu depositarei o valor no poca, comprarei os cards e te mostro o comprovante de compra.</li>
-                <li>Prontinho! A caixa fecha a cada 40 cards e são enviados para a minha warehouse coreana.</li>
-                <li>Tenha paciência, lembre-se que a caixa do poca precisa fechar e depois a caixa na warehouse precisa acumular com outros itens pro frete inter valer a pena para todos.</li>
-                <li>Aceito a compra de cards de qualquer grupo.</li>
+                <li>Busque o card desejado diretamente no site oficial <a href="https://pocamarket.com/" target="_blank" class="poca-link-btn">Acessar Pocamarket</a></li>
+                <li>Digite o valor em dólar do card no campo da calculadora na próxima página e veja o valor convertido em real (já com as taxas do poca e da gom).</li>
+                <li>Mande o link dos cards desejados no <a href="https://wa.me/5581920018626" target="_blank">meu WhatsApp</a>.</li>
+                <li>Eu te mando o pix, você faz o pagamento e me manda o comprovante.</li>
+                <li>Assim que for pago, comprarei os cards e te mostro o comprovante de compra.</li>
+                <li>A caixa fecha a cada 40 cards e são enviados para a minha warehouse coreana.</li>
                 <li>Não é possivel cancelar a compra após ela ser realizada, se necessário é possivel o repasse.</li>
-                <li>Não me responsabilizo por itens falsificados (o poca analisa, mas é possivel que passe por eles imperceptível).</li>
+                <li>Não me responsabilizo por itens falsificados.</li>
             </ul>
             
             <div class="notion-link">
@@ -396,8 +409,7 @@
             <h1 class="main-title">CALCULADORA</h1>
             <div class="handle">@mletxi</div>
             
-            
-            <input type="number" id="v" placeholder="Digite o valor" step="any">
+            <input type="number" id="v" placeholder="Digite o valor em dólar" step="any">
             <button class="btn-primary" id="b">Calcular</button>
             
             <div class="result-wrapper">
